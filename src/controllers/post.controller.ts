@@ -32,7 +32,7 @@ export async function updatePost(req: Request, res: Response, next: NextFunction
     const id = Number(req.params.id);
     const title: string = req.body.title;
     const content: string = req.body.content;
-    if (!title || !content) {
+    if (!title && !content) {
       throw Error('Invalid body');
     }
     if (!id) {
