@@ -23,6 +23,37 @@ export async function addPost(req: Request, res: Response, next: NextFunction) {
     const post = await postService.addPost(title, content);
     res.status(200).send(post);
   } catch (err) {
-    res.status(500).send(`Error while find posts (${err.message})`);
+    res.status(500).send(`Error while add post (${err.message})`);
+  }
+}
+
+export async function updatePost(req: Request, res: Response, next: NextFunction) {
+  try {
+    const id = Number(req.params.id);
+    const title: string = req.body.title;
+    const content: string = req.body.content;
+    if (!title && !content) {
+      throw Error('Invalid body');
+    }
+    if (!id) {
+      throw Error('Invalid params');
+    }
+    const post = await postService.updatePost(id, title, content);
+    res.status(200).send(post);
+  } catch (err) {
+    res.status(500).send(`Error while update post (${err.message})`);
+  }
+}
+
+export async function deletePost(req: Request, res: Response, next: NextFunction) {
+  try {
+    const id = Number(req.params.id);
+    if (!id) {
+      throw Error('Invalid params');
+    }
+    const post = await postService.deletePost(id);
+    res.status(200).send(post);
+  } catch (err) {
+    res.status(500).send(`Error while delete post (${err.message})`);
   }
 }
