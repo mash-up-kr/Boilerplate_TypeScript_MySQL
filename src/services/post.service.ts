@@ -23,7 +23,7 @@ export async function updatePost(id: number, title: string, content: string) {
 }
 
 export async function deletePost(id: number) {
-const post: Post = await Post.findOne({ id });
+  const post: Post = await Post.findOne({id});
   await post.remove();
   return post;
 }
