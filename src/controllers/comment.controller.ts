@@ -16,3 +16,19 @@ export async function addComment(req: Request, res: Response, next: NextFunction
     res.status(500).send(`Error while find comments (${err.message})`);
   }
 }
+
+export async function deleteComment(req: Request, res: Response, next: NextFunction){
+  try {
+    const postId = Number(req.params.postId);
+    const commentId = Number(req.params.commentId);
+    if(!postId || !commentId){
+      throw Error('Invalid params')
+    }
+    await commentService.deleteComment(postId, commentId);
+    res.status(200).send({
+      message : "Successfully deleted"
+    });
+  } catch (err) {
+    res.status(500).send(`Error while delete comments`);
+  }
+}

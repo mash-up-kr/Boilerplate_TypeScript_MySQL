@@ -9,3 +9,10 @@ export async function addComment(postId: number, content: string) {
   await comment.save();
   return comment;
 }
+
+export async function deleteComment(postId : number, id: number) {
+  Post.id = postId;
+  const comment: Comment = await Comment.findOne({ id });
+  await comment.remove();
+  return comment;
+} 
