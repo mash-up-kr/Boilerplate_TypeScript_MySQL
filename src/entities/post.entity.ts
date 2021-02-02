@@ -20,4 +20,5 @@ export class Post extends BaseEntity {
 
   @OneToMany(type => Comment, comment => comment.post)
   comments: Comment[];
+  static id: number;
 }
