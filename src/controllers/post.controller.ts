@@ -4,12 +4,15 @@ import {Request, Response, NextFunction} from 'express';
 import * as postService from '../services/post.service';
 
 export async function getPosts(
-    req: Request, res: Response, next: NextFunction) {
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
   try {
     const posts = await postService.getPosts();
     res.status(200).send(posts);
   } catch (err) {
-    res.status(500).send(`Error while find posts`);
+    res.status(500).send('Error while find posts');
   }
 }
 
@@ -27,7 +30,11 @@ export async function addPost(req: Request, res: Response, next: NextFunction) {
   }
 }
 
-export async function updatePost(req: Request, res: Response, next: NextFunction) {
+export async function updatePost(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
   try {
     const id = Number(req.params.id);
     const title: string = req.body.title;
@@ -45,7 +52,11 @@ export async function updatePost(req: Request, res: Response, next: NextFunction
   }
 }
 
-export async function deletePost(req: Request, res: Response, next: NextFunction) {
+export async function deletePost(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
   try {
     const id = Number(req.params.id);
     if (!id) {
