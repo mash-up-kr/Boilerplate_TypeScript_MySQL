@@ -19,9 +19,9 @@ createConnection(connectionOptions).then(connection => {
   app.use(cors());
   app.use(express.json());
   app.use(express.urlencoded({extended: false}));
-  app.use(process.env.NODE_ENV === 'production' ?
-      logger('combined') :
-      logger('dev'));
+  app.use(
+    process.env.NODE_ENV === 'production' ? logger('combined') : logger('dev')
+  );
   app.use(cookieParser());
   app.use(bodyParser.urlencoded({extended: true}));
   app.use(bodyParser.json());
@@ -35,7 +35,9 @@ createConnection(connectionOptions).then(connection => {
   // Start server
   app.listen(app.get('port'), () => {
     console.log(
-        `!!!App is running at http://localhost:${app.get('port')} in ${app.get(
-            'env')} mode!!!`);
+      `!!!App is running at http://localhost:${app.get('port')} in ${app.get(
+        'env'
+      )} mode!!!`
+    );
   });
 });

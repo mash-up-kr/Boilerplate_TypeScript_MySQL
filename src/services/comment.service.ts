@@ -15,4 +15,4 @@ export async function deleteComment(postId: number, id: number) {
   const comment: Comment = await Comment.findOne({id});
   await comment.remove();
   return comment;
-} 
+}

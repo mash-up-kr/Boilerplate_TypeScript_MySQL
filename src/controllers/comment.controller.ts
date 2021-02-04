@@ -3,11 +3,15 @@
 import {Request, Response, NextFunction} from 'express';
 import * as commentService from '../services/comment.service';
 
-export async function addComment(req: Request, res: Response, next: NextFunction) {
+export async function addComment(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
   try {
     const postId = Number(req.params.postId);
     const content: string = req.body.content;
-    if(!postId || !content){
+    if (!postId || !content) {
       throw Error('Invalid body');
     }
     const comment = await commentService.addComment(postId, content);
@@ -17,18 +21,22 @@ export async function addComment(req: Request, res: Response, next: NextFunction
   }
 }
 
-export async function deleteComment(req: Request, res: Response, next: NextFunction){
+export async function deleteComment(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
   try {
     const postId = Number(req.params.postId);
     const commentId = Number(req.params.commentId);
-    if(!postId || !commentId){
-      throw Error('Invalid params')
+    if (!postId || !commentId) {
+      throw Error('Invalid params');
     }
     await commentService.deleteComment(postId, commentId);
     res.status(200).send({
-      message : "Successfully deleted"
+      message: 'Successfully deleted',
     });
   } catch (err) {
-    res.status(500).send(`Error while delete comments`);
+    res.status(500).send('Error while delete comments');
   }
 }

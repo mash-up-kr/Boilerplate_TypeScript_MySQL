@@ -15,7 +15,7 @@ export async function addPost(title: string, content: string) {
 }
 
 export async function updatePost(id: number, title: string, content: string) {
-  const post: Post = await Post.findOne({ id });
+  const post: Post = await Post.findOne({id});
   post.title = title;
   post.content = content;
   await post.save();

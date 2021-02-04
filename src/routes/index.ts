@@ -1,8 +1,4 @@
-import express, {
-  Request,
-  Response,
-  Router,
-} from 'express';
+import express, {Request, Response, Router} from 'express';
 import apiV1Router from './api/v1';
 
 const router: Router = express.Router();
