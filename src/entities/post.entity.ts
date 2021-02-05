@@ -3,9 +3,12 @@ import {
   Column,
   PrimaryGeneratedColumn,
   OneToMany,
+  ManyToMany,
   BaseEntity,
+  JoinTable,
 } from 'typeorm';
 import {Comment} from './comment.entity';
+import {Hashtag} from './hashtag.entity';
 
 @Entity()
 export class Post extends BaseEntity {
@@ -17,6 +20,10 @@ export class Post extends BaseEntity {
 
   @Column()
   content: string;
+
+  @ManyToMany(() => Hashtag)
+  @JoinTable()
+  hashtags: Hashtag[];
 
   @OneToMany(type => Comment, comment => comment.post)
   comments: Comment[];
