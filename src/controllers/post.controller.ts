@@ -20,10 +20,11 @@ export async function addPost(req: Request, res: Response, next: NextFunction) {
   try {
     const title: string = req.body.title;
     const content: string = req.body.content;
+    const hashtags: string[] = req.body.hashtags || [];
     if (!title || !content) {
       throw Error('Invalid body');
     }
-    const post = await postService.addPost(title, content);
+    const post = await postService.addPost(title, content, hashtags);
     res.status(200).send(post);
   } catch (err) {
     res.status(500).send(`Error while add post (${err.message})`);
