@@ -3,7 +3,9 @@ import {Post} from '../entities/post.entity';
 import {Hashtag} from '../entities/hashtag.entity';
 
 export async function getPosts() {
-  const posts: Post[] = await Post.find();
+  const posts: Post[] = await Post.find({
+    relations: ['hashtags'],
+  });
   return posts;
 }
 
