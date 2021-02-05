@@ -1,6 +1,37 @@
 # Boilerplate_TypeScript_MySQL
 
-## Commands
-- `npm run build`: 서버 빌드 
-- `npm run start`: 서버 실행
-- `npm run dev`: 개발 모드로 서버 실행
+> Boiler project with TypeScript and MySQL
+
+
+
+## 🖥  Installation
+
+```bash
+# Install package
+$ npm install
+
+# Run prod mode
+$ npm run start
+
+# Run dev mode
+$ npm run dev
+```
+
+
+
+## 🛠 Technologies
+
+- Node.js
+- MySQL
+- TypeScript
+
+
+
+## 🤝 Contributors
+
+🐧 [pengin7384](https://github.com/pengin7384)
+
+🐥 [swimjiy](https://github.com/swimjiy)
+
+🐬 [god9599](https://github.com/god9599)
+
