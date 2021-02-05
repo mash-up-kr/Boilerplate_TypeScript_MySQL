@@ -31,7 +31,6 @@ $ npm run dev
 
 🐧 [pengin7384](https://github.com/pengin7384)
 
-🐥 [swimjiy](https://github.com/swimjiy)
-
 🐬 [god9599](https://github.com/god9599)
 
+🐥 [swimjiy](https://github.com/swimjiy)
