@@ -15,7 +15,7 @@ export async function addComment(
       throw Error('Invalid body');
     }
     const comment = await commentService.addComment(postId, content);
-    res.status(200).send({postId, comment});
+    res.status(200).send({comment});
   } catch (err) {
     res.status(500).send(`Error while find comments (${err.message})`);
   }
