@@ -5,6 +5,9 @@ import {Post} from '../entities/post.entity';
 export async function addComment(postId: number, content: string) {
   const comment: Comment = new Comment();
   const post: Post = await Post.findOne({id: postId});
+  if(!post){
+    throw Error('No post');
+  }
   comment.content = content;
   comment.post = post;
   await comment.save();
@@ -12,7 +15,7 @@ export async function addComment(postId: number, content: string) {
 }
 
 export async function deleteComment(postId: number, id: number) {
-  Post.id = postId;
+  Post.id = postId
   const comment: Comment = await Comment.findOne({id});
   await comment.remove();
   return comment;
