@@ -15,7 +15,7 @@ export async function addComment(postId: number, content: string) {
 }
 
 export async function deleteComment(postId: number, id: number) {
-  Post.id = postId
+  Post.id = postId;
   const comment: Comment = await Comment.findOne({id});
   await comment.remove();
   return comment;
