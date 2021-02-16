@@ -11,13 +11,16 @@ export async function addComment(
   try {
     const postId = Number(req.params.postId);
     const content: string = req.body.content;
-    if (!postId || !content) {
+    if (!content) {
       throw Error('Invalid body');
     }
+    else if (!postId) {
+      throw Error('Invalid params');
+    }
     const comment = await commentService.addComment(postId, content);
-    res.status(200).send({postId, comment});
+    res.status(200).send({comment});
   } catch (err) {
-    res.status(500).send(`Error while find comments (${err.message})`);
+    res.status(500).send(`Error while add comments (${err.message})`);
   }
 }
 

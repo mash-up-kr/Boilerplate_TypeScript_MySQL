@@ -4,8 +4,12 @@ import {Post} from '../entities/post.entity';
 
 export async function addComment(postId: number, content: string) {
   const comment: Comment = new Comment();
-  Post.id = postId;
+  const post: Post = await Post.findOne({id: postId});
+  if(!post){
+    throw Error('No post');
+  }
   comment.content = content;
+  comment.post = post;
   await comment.save();
   return comment;
 }
